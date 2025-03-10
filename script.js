@@ -6,17 +6,17 @@ let options = ["R", "P", "S"];
 window.alert("Hey there, let's play Rock, Paper, Scissors!");
 
 const playGame = function () {
-  let playerChoice = prompt(
+  let playerChoice = window.prompt(
     'Type "R" for rock, "P" for paper, or "S" for scissors'
   );
 
-  if (playerChoice === null) {
+  if (!playerChoice) {
     return;
   }
 
   playerChoice = playerChoice.toUpperCase();
 
-  if (playerChoice !== "R" || playerChoice !== "P" || playerChoice !== "S") {
+  if (playerChoice !== "R" && playerChoice !== "P" && playerChoice !== "S") {
     window.alert("Sorry, I didn't understand that input.");
     playGame();
   }
@@ -47,4 +47,16 @@ const playGame = function () {
     losses++;
     window.alert("The computer chose " + computerWord + ". You lose!");
   }
+
+  window.alert("Wins: " + wins + "\nLosses: " + losses + "\nTies: " + ties);
+
+  let restart = window.confirm("Would you like to play again?");
+
+  if (restart) {
+    playGame();
+  } else {
+    return;
+  }
 };
+
+playGame();
